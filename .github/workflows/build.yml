@@ -23,14 +23,16 @@ jobs:
         cache: 'gradle'
 
     - name: Make gradlew executable
+      working-directory: MinePassportPro
       run: chmod +x gradlew
 
     - name: Build with Gradle
+      working-directory: MinePassportPro
       run: ./gradlew build --no-daemon
 
     - name: Upload JAR
       uses: actions/upload-artifact@v4
       with:
         name: MinePassportPro
-        path: build/libs/MinePassportPro-*.jar
+        path: MinePassportPro/build/libs/MinePassportPro-*.jar
         retention-days: 30
